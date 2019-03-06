@@ -1,4 +1,4 @@
-package main
+/*package main
 
 import (
   "bufio"
@@ -64,4 +64,17 @@ func main() {
   fmt.Printf("%s\n", b)
   // aBCDE
 
+}*/
+
+
+package main
+
+import (
+  "./cache"
+  "./tcp"
+)
+
+func main() {
+  ca := cache.New("inmemory")
+  tcp.New(ca).Listen()
 }

@@ -3,6 +3,7 @@ package tcp
 import (
   "../cache"
   "net"
+  "log"
 )
 
 type Server struct {
@@ -11,7 +12,7 @@ type Server struct {
 
 func (s *Server) Listen() {
 
-  ln, e := net.Listen("tcp", ":12345")
+  ln, e := net.Listen("tcp", ":12346")
   if e != nil {
     panic(e)
   }
@@ -23,7 +24,8 @@ func (s *Server) Listen() {
       panic(e)
       continue
     }
-    go handleConnection(conn)
+    log.Println("new connection go handler:")
+    go s.handleConnection(conn)
   }
 
 }
